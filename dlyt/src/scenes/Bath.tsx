@@ -1,5 +1,5 @@
 import React from 'react';
-import {Bubble, C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, hop, lerp, rand, ramp, sceneRange, smooth, spring, talk} from '../lib';
+import {Bubble, C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, hop, lerp, rand, ramp, sceneRange, smooth, spring, talk, Bokeh, bgDepth} from '../lib';
 
 // stanza 0 & 1 — bath time. Side view of a cosy bathroom at night.
 
@@ -85,6 +85,7 @@ export const Bath: React.FC<{t: number}> = ({t}) => {
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}>
       <Defs id="bath" />
       <g transform={`translate(${W / 2 + panX},${H / 2 - 120}) scale(${zoom}) translate(${-W / 2},${-H / 2})`}>
+        <g transform={bgDepth(zoom, panX)}>
         <g filter="url(#rough-bath)">
           {/* upper wall */}
           <rect y={-200} width={W} height={540} fill="#e8cf9f" />
@@ -115,6 +116,7 @@ export const Bath: React.FC<{t: number}> = ({t}) => {
           <ellipse cx="850" cy="905" rx="520" ry="34" fill="#5a2a1c" opacity="0.35" />
         </g>
 
+        </g>
         {/* steam */}
         {Array.from({length: 7}, (_, i) => {
           const p = ((lt * 0.12 + i / 7) % 1);
@@ -275,6 +277,7 @@ export const Bath: React.FC<{t: number}> = ({t}) => {
         <HeartStream t={t} x={1280} y={330} strength={ramp(t, cue(1, 3), cue(1, 3) + 0.6)} />
         {toesWiggle && t < cue(1, 0) && [0, 1, 2, 3].map((i) => <Sparkle key={i} x={foot1[0] + 60 * Math.cos(t * 2 + i * 1.6)} y={foot1[1] - 60 + 50 * Math.sin(t * 2 + i * 1.6)} s={0.9} o={0.9} />)}
       </g>
+      <Bokeh t={t} dx={-panX * 3} seed={2} color="#ffffff" o={0.14} />
       <rect width={W} height={H} fill="url(#vignette)" />
     </svg>
   );

@@ -511,3 +511,23 @@ export const Limb: React.FC<{a: [number, number]; b: [number, number]; bend?: nu
     </g>
   );
 };
+
+/** soft out-of-focus foreground lights/bubbles drifting past the "lens" (screen space) */
+export const Bokeh: React.FC<{t: number; dx?: number; n?: number; seed?: number; color?: string; o?: number}> = ({t, dx = 0, n = 7, seed = 1, color = '#fff2d0', o = 0.16}) => (
+  <g filter="url(#soft)">
+    {Array.from({length: n}, (_, i) => {
+      const k = i + seed * 17;
+      const sp = 8 + rand(k) * 14;
+      const x = ((rand(k + 1) * (W + 400) + t * sp + dx * (1.2 + rand(k + 2))) % (W + 400)) - 200;
+      const y = 60 + rand(k + 3) * (H - 420) + Math.sin(t * 0.4 + i) * 30;
+      const r = 40 + rand(k + 4) * 70;
+      return <circle key={i} cx={x} cy={y} r={r} fill={color} opacity={o * (0.6 + 0.4 * Math.sin(t * 0.7 + i * 2))} />;
+    })}
+  </g>
+);
+
+/** wrap background art so it moves less than the camera (depth). zoom/pan are the scene camera's. */
+export const bgDepth = (zoom: number, panX: number, depth = 0.45) => {
+  const s = (1 + (zoom - 1) * (1 - depth)) / zoom;
+  return `translate(${W / 2 - (panX * depth) / zoom},${H / 2}) scale(${s}) translate(${-W / 2},${-H / 2})`;
+};

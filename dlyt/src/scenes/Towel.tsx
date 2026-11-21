@@ -1,5 +1,5 @@
 import React from 'react';
-import {C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, W, Word, blink, cue, lerp, rand, ramp, sceneRange, smooth, spring, talk, wordAt} from '../lib';
+import {C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, W, Word, blink, cue, lerp, rand, ramp, sceneRange, smooth, spring, talk, wordAt, Bokeh, bgDepth} from '../lib';
 
 // stanza 2 — out of the bath, wrapped in a big hooded towel on Daddy's lap.
 
@@ -47,6 +47,7 @@ export const Towel: React.FC<{t: number}> = ({t}) => {
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}>
       <Defs id="towel" />
       <g transform={`translate(${W / 2},${H / 2 - 110}) scale(${zoom}) translate(${-W / 2 - 40},${-H / 2})`}>
+        <g transform={bgDepth(zoom, 0)}>
         <g filter="url(#rough-towel)">
           <rect x={-300} y={-300} width={W + 600} height={H + 600} fill="#a9bba3" />
           {Array.from({length: 9}, (_, r) =>
@@ -74,6 +75,7 @@ export const Towel: React.FC<{t: number}> = ({t}) => {
           <rect x="1514" y="860" width="26" height="260" fill="#8a5a24" />
         </g>
 
+        </g>
         {/* Daddy, sitting */}
         <g transform="translate(170,0)">
           <path d="M1040 840 Q 1000 1000 1060 1200 L 1400 1200 Q 1440 1000 1380 840Z" fill="#3d4a5f" />
@@ -143,6 +145,7 @@ export const Towel: React.FC<{t: number}> = ({t}) => {
         <HeartStream t={t} x={1200} y={460 + by} strength={kissing} count={10} />
         <Word text="mwah!" x={1300} y={380} t={t} t0={kissT} size={70} rot={8} />
       </g>
+      <Bokeh t={t} seed={3} color="#fff6e6" o={0.12} />
       <rect width={W} height={H} fill="url(#vignette)" />
     </svg>
   );

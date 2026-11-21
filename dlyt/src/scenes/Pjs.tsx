@@ -1,5 +1,5 @@
 import React from 'react';
-import {Burst, C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, hop, lerp, rand, ramp, sceneRange, smooth, spring, talk, wordAt} from '../lib';
+import {Burst, C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, hop, lerp, rand, ramp, sceneRange, smooth, spring, talk, wordAt, Bokeh, bgDepth} from '../lib';
 
 // stanzas 3 & 4 — pyjamas on Daddy's lap, on the rug in a warm red bedroom.
 
@@ -106,6 +106,7 @@ export const Pjs: React.FC<{t: number}> = ({t}) => {
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}>
       <Defs id="pjs" />
       <g transform={`translate(${W / 2 + panX},${H / 2 - 95}) scale(${zoom}) translate(${-W / 2},${-H / 2})`}>
+        <g transform={bgDepth(zoom, panX)}>
         <g filter="url(#rough-pjs)">
           <rect x={-300} y={-300} width={W + 600} height={1000} fill={C.red} />
           {/* wallpaper sprigs */}
@@ -167,6 +168,7 @@ export const Pjs: React.FC<{t: number}> = ({t}) => {
           <rect x="1930" y="420" width="200" height="90" rx="40" fill="#f6ead4" />
         </g>
 
+        </g>
         <g transform={`translate(930,700) rotate(${spin}) translate(-930,-700) translate(0,${-bounce})`}>
           {/* Daddy behind */}
           <g>
@@ -235,6 +237,7 @@ export const Pjs: React.FC<{t: number}> = ({t}) => {
             return <Sparkle key={i} x={200 + rand(i) * 1500} y={700 - q * 600} s={0.8} o={Math.sin(Math.PI * q) * 0.7} color="#f2cf86" />;
           })}
       </g>
+      <Bokeh t={t} dx={-panX * 3} seed={4} color="#ffd98f" o={0.13} />
       <rect width={W} height={H} fill="url(#vignette)" />
     </svg>
   );

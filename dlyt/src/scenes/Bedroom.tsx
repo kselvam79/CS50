@@ -1,5 +1,5 @@
 import React from 'react';
-import {C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, lerp, rand, ramp, sceneRange, smooth, talk, wordAt} from '../lib';
+import {C, DadHead, Defs, Foot, H, Hand, HeartStream, KidHead, Limb, Sparkle, W, Word, blink, cue, lerp, rand, ramp, sceneRange, smooth, talk, wordAt, Bokeh, bgDepth} from '../lib';
 
 // stanzas 9–12 — song time and goodnight. Side view of the toddler's bed at night.
 
@@ -90,6 +90,7 @@ export const Bedroom: React.FC<{t: number; mode: 'song' | 'night'}> = ({t, mode}
     <svg viewBox={`0 0 ${W} ${H}`} width={W} height={H}>
       <Defs id={mode} />
       <g transform={`translate(${W / 2},${430}) scale(${z}) translate(${-cx},${-cy})`}>
+        <g transform={bgDepth(z, -(cx - 960) * z)}>
         <g filter={`url(#rough-${mode})`}>
           <rect x={-400} y={-400} width={W + 800} height={1100} fill="#6e2f2c" />
           {/* wallpaper stripes */}
@@ -141,6 +142,7 @@ export const Bedroom: React.FC<{t: number; mode: 'song' | 'night'}> = ({t, mode}
           })}
         </g>
 
+        </g>
         {/* Daddy kneeling behind the bed */}
         <g transform={`translate(${dadX - 960},${dadY})`}>
           <path d="M800 400 Q 960 340 1120 400 Q 1170 450 1170 560 L 750 560 Q 750 450 800 400Z" fill={C.tee} />
@@ -238,6 +240,7 @@ export const Bedroom: React.FC<{t: number; mode: 'song' | 'night'}> = ({t, mode}
       <rect width={W} height={H} fill="#0e1430" opacity={dark * 0.55} />
       {/* ending: extra dark so the words read */}
       {isNight && <rect width={W} height={H} fill="#080a18" opacity={0.55 * ramp(t, cue(12, 0) - 1.5, cue(12, 0))} />}
+      <Bokeh t={t} dx={(cx - 960) * 2} seed={5} color="#f6dfa4" o={0.1 + 0.08 * dark} />
       <rect width={W} height={H} fill="url(#vignette)" />
     </svg>
   );
