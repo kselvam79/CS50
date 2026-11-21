@@ -25,7 +25,7 @@ const Leg: React.FC<{
   const wob = Math.sin(t * 14) * wiggle * 10;
   return (
     <g>
-      <Limb a={hip} b={foot} w={54} fill="#f3c6a3" shade={C.kidShade} />
+      <Limb a={hip} b={foot} w={54} fill="#dcaa83" shade={C.kidShade} />
       {showFoot > 0.01 && (
         <g transform={`translate(${foot[0]},${foot[1]}) rotate(${ang + 90}) scale(${0.78 * showFoot})`}>
           <Foot toeLift={toeLift} mirror={mirror} />
@@ -198,11 +198,11 @@ export const Pjs: React.FC<{t: number}> = ({t}) => {
               const up = Math.max(armsUp, cuddle * 0.3, giggle ? 0.55 + 0.15 * Math.sin(t * 8) : 0);
               const l: P = along([760, 590], [700, 330], up);
               const r: P = along([1040, 590], [1100, 330], up);
-              const sleeve = topOn > 0.5 ? 'url(#pjPattern)' : '#f3c6a3';
+              const sleeve = topOn > 0.5 ? 'url(#pjPattern)' : '#dcaa83';
               return (
                 <g>
-                  <Limb a={[815, 490]} b={l} bend={-20} w={40} fill={sleeve === '#f3c6a3' ? '#f3c6a3' : C.pj} shade={sleeve === '#f3c6a3' ? C.kidShade : C.pjShade} />
-                  <Limb a={[985, 490]} b={r} bend={20} w={40} fill={sleeve === '#f3c6a3' ? '#f3c6a3' : C.pj} shade={sleeve === '#f3c6a3' ? C.kidShade : C.pjShade} />
+                  <Limb a={[815, 490]} b={l} bend={-20} w={40} fill={sleeve === '#dcaa83' ? '#dcaa83' : C.pj} shade={sleeve === '#dcaa83' ? C.kidShade : C.pjShade} />
+                  <Limb a={[985, 490]} b={r} bend={20} w={40} fill={sleeve === '#dcaa83' ? '#dcaa83' : C.pj} shade={sleeve === '#dcaa83' ? C.kidShade : C.pjShade} />
                   <circle cx={l[0]} cy={l[1]} r="22" fill="url(#kidSkin)" stroke={C.kidShade} strokeWidth="3" />
                   <circle cx={r[0]} cy={r[1]} r="22" fill="url(#kidSkin)" stroke={C.kidShade} strokeWidth="3" />
                 </g>

@@ -1,69 +1,69 @@
 {
-  "title": "Daddy Loves Your Toes",
-  "subtitle": "a bedtime story for my little one",
+  "title": "Daddy Loves Those Toes",
+  "subtitle": "a tozy song for my little one",
   "stanzas": [
     {"scene": "bath", "lines": [
       "Splish goes the water and splash goes the tub,",
       "it's bubbles and duckies and rub-a-dub-dub.",
-      "And what's peeking up where the bubble-foam goes?",
-      "Ten slippery, wiggly, wet little toes!"]},
+      "And what's peeking up from the bubbles? Oh my!",
+      "Ten little tozies say, \"Hi, Daddy, hi!\""]},
     {"scene": "bath", "lines": [
-      "I scrub every heel and I wash every sole,",
-      "you kick and you splash and you giggle and roll.",
+      "Here are the tozies, on the bottom of your feet,",
+      "the heel's on the other side. Kick, splash, how neat!",
       "The duck says a quack, and the bubbles go pop,",
       "and ten little tozies say, \"Don't ever stop!\""]},
     {"scene": "towel", "lines": [
       "Then out with a whoosh, in a towel warm and wide,",
-      "I dry every finger and toe, side to side.",
+      "I dry every tozy, from side to side.",
       "A rub on your head and a boop on your nose,",
       "and one extra kiss for those just-washed toes."]},
     {"scene": "pjs", "lines": [
       "Then into pyjamas, all stars and moons bright,",
       "the top goes on easy, the bottoms are tight.",
       "I wiggle one leg in, and what do you know?",
-      "Pop! Out at the bottom, five toes say hello!"]},
+      "Pop! Out at the bottom, five tozies say hello!"]},
     {"scene": "pjs", "lines": [
       "The other leg now, it goes tug, tug, and whee!",
       "Five more little tozies come waving at me.",
-      "Then up for a cuddle, a squeeze and a spin,",
-      "and off to the big bed. It's time to climb in."]},
+      "\"Hey, little tozies, get up in those sheets!",
+      "Come sleep right next to me, with your little tozy feet!\""]},
     {"scene": "toes", "lines": [
-      "So climb onto Daddy, head down by my knees,",
-      "and feet by my face, if you please, if you please.",
-      "Here's one little piggy, and here's piggy two.",
+      "So climb up on Daddy, your head by my knees,",
+      "your tozies by my cheeks, if you please, if you please.",
+      "Here's one little tozy, and here's tozy two.",
       "Those three in the middle? I don't know them. Do you?"]},
     {"scene": "toes", "lines": [
-      "Then five on the other, all wiggly and small,",
+      "Then five on the other, so cuddly and small,",
       "ten little tozies, and I love them all.",
       "You giggle and squirm when I tickle your feet,",
       "you tell me they're stinky, I tell you they're sweet."]},
     {"scene": "toes", "lines": [
-      "\"Why do I need tozies? I've got such big feet!\"",
+      "\"Why do I need tozies, when Daddy has big feet?\"",
       "So Daddy can kiss them, and tickle, and eat!",
-      "And tozies hold steady so you don't fall down,",
-      "they carry you running all over the town."]},
+      "They're the most important part when you walk around,",
+      "they keep you nice and steady, so you don't fall down."]},
     {"scene": "toes", "lines": [
       "They ran out to meet me when I came through the door,",
       "they danced in the kitchen and stomped on the floor.",
-      "You laugh with your belly, you laugh with your nose,",
-      "you laugh all the way to the tips of your toes."]},
+      "These tozies look yummy, a tozy treat!",
+      "I'll eat them all up! Nom, nom! Oh, so sweet!"]},
     {"scene": "song", "lines": [
       "Now into your bed, and the lamp's turning low,",
-      "I'll sing you the song that you already know.",
+      "I'll sing you a tozy song, soft and slow.",
       "I sing to your nose and I sing to your hair,",
       "and I sing to the tozies still wiggling there."]},
     {"scene": "song", "song": true, "lines": [
-      "Sleep, little tozies, all soft in a row,",
-      "the moon's watching over, so gentle and slow.",
-      "Sleep, little feet, you've had such a big day.",
-      "You ran and you jumped and you danced and you played."]},
+      "Sleep, little tozies, so cuddly and neat,",
+      "the moon's watching over your little tozy feet.",
+      "Snuggle down under, so they won't turn blue,",
+      "all comfy and cosy, the whole night through."]},
     {"scene": "night", "lines": [
       "Your eyes getting heavy, your yawn big and slow,",
       "I tuck in the blanket from top down to toe.",
-      "I'll keep them all warm and all safe through the night,",
-      "ten sleepy tozies, all tucked up tight."]},
+      "I'll keep them all warm and all safe while you sleep,",
+      "ten sleepy tozies, not making a peep."]},
     {"scene": "night", "ending": true, "lines": [
       "From the top of your head to the tip of your nose,",
-      "but most of all, darling, Daddy loves your toes."]}
+      "oh my, little one, Daddy loves those toes."]}
   ]
 }

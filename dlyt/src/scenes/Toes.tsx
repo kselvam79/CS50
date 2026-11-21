@@ -292,6 +292,8 @@ export const Toes: React.FC<{t: number}> = ({t}) => {
           ))}
         <Word text="hee hee!" x={1440} y={330} t={t} t0={giggleT + 0.3} dur={2.4} size={56} rot={-8} />
         <Word text="nom nom!" x={360} y={360} t={t} t0={eatT - 0.1} dur={1.8} size={60} rot={-6} />
+        <Word text="nom nom nom!" x={420} y={340} t={t} t0={wordAt(8, 3, 'Nom') - 0.1} dur={2.2} size={64} rot={-6} />
+        <Word text="yum!" x={600} y={300} t={t} t0={wordAt(8, 2, 'yummy')} dur={1.6} size={60} rot={8} />
         <Word text="ha ha ha!" x={1450} y={300} t={t} t0={laugh + 0.2} dur={2.4} size={60} rot={8} />
         <Word text="ha ha!" x={300} y={320} t={t} t0={laugh + 1.4} dur={2.4} size={56} rot={-8} />
         <Word text="big feet!" x={1700} y={300} t={t} t0={bigFeet + 1.6} dur={2} size={58} rot={6} />
@@ -308,7 +310,7 @@ export const Toes: React.FC<{t: number}> = ({t}) => {
             <path d={`M${x - 6} ${y + 60 - h} L ${x + w / 2} ${y + 30 - h} L ${x + w + 6} ${y + 60 - h}Z`} fill="#7a3430" />
           </g>
         ))}
-        <MiniKid x={lerp(-260, 240, ((t - steady) / 6) % 1)} y={-10} t={t} mode={t < wordAt(7, 2, 'fall') + 0.6 ? 'stand' : 'run'} s={1.1} />
+        <MiniKid x={lerp(-260, 240, ((t - steady) / 6) % 1)} y={-10} t={t} mode={t < wordAt(7, 3, 'fall') + 0.6 ? 'stand' : 'run'} s={1.1} />
       </Cloud>
       <Cloud x={830} y={215} w={720} h={320} o={bubble2}>
         {t < cue(8, 1) ? (

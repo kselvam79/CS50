@@ -61,17 +61,17 @@ export const sceneRange = (name: string) => {
 
 // ---------- palette ----------
 export const C = {
-  skin: '#efc3a0',
-  skinShade: '#d89b7c',
-  kidSkin: '#f6cdaa',
-  kidShade: '#e3a283',
-  hair: '#2e211b',
-  hairHi: '#5a4234',
-  cheek: '#e8826f',
-  tee: '#94a8c0',
-  teeShade: '#71849e',
-  pj: '#6f8a6a',
-  pjShade: '#566e53',
+  skin: '#c08560',
+  skinShade: '#9a613f',
+  kidSkin: '#dcaa83',
+  kidShade: '#bb835d',
+  hair: '#231b17',
+  hairHi: '#4a3a30',
+  cheek: '#d9705e',
+  tee: '#9fa3ab',
+  teeShade: '#7d818a',
+  pj: '#7d8fbb',
+  pjShade: '#5f6f98',
   cream: '#f6ead4',
   ochre: '#d39a45',
   ochreDark: '#a8702c',
@@ -101,17 +101,17 @@ export const Defs: React.FC<{id: string}> = ({id}) => (
       <feGaussianBlur stdDeviation="30" />
     </filter>
     <radialGradient id="kidSkin" cx="0.42" cy="0.38" r="0.7">
-      <stop offset="0" stopColor="#fde0c4" />
+      <stop offset="0" stopColor="#ebc19c" />
       <stop offset="0.65" stopColor={C.kidSkin} />
       <stop offset="1" stopColor={C.kidShade} />
     </radialGradient>
     <radialGradient id="dadSkin" cx="0.38" cy="0.35" r="0.75">
-      <stop offset="0" stopColor="#f7d3b4" />
+      <stop offset="0" stopColor="#d59f78" />
       <stop offset="0.6" stopColor={C.skin} />
       <stop offset="1" stopColor={C.skinShade} />
     </radialGradient>
     <linearGradient id="limbKid" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stopColor="#fbd9bc" />
+      <stop offset="0" stopColor="#e6b892" />
       <stop offset="1" stopColor={C.kidShade} />
     </linearGradient>
     <radialGradient id="cheek" cx="0.5" cy="0.5" r="0.5">
@@ -186,7 +186,8 @@ export const KidHead: React.FC<{
     const lid = eyes === 'sleepy' ? 0.5 : blinkAmt;
     return (
       <g>
-        <ellipse cx={x} cy={y} rx="15" ry="17" fill="#2b1a14" />
+        <ellipse cx={x} cy={y} rx="15" ry="16" fill="#1e120d" />
+        <path d={`M${x - 18} ${y - 6} Q ${x} ${y - 22} ${x + 18} ${y - 6}`} stroke="#1e120d" strokeWidth="4" fill="none" strokeLinecap="round" />
         <circle cx={x - 5} cy={y - 6} r="5.5" fill="#fff" />
         <circle cx={x + 5} cy={y + 6} r="2.4" fill="#fff" opacity="0.8" />
         {lid > 0 && (
@@ -211,7 +212,13 @@ export const KidHead: React.FC<{
       case 'sleep':
         return <path d="M-8 62 Q 0 67 8 62" stroke="#8a3a32" strokeWidth="4" fill="none" strokeLinecap="round" />;
       default:
-        return <path d="M-18 58 Q 0 76 18 58" stroke="#8a3a32" strokeWidth="5" fill="none" strokeLinecap="round" />;
+        return (
+          <g>
+            <path d="M-32 54 Q 0 62 32 54 Q 26 86 0 88 Q -26 86 -32 54Z" fill="#6a2420" />
+            <path d="M-28 56 Q 0 63 28 56 L 26 67 Q 0 72 -26 67Z" fill="#fffaf2" />
+            <path d="M-40 50 q -4 6 2 10 M40 50 q 4 6 -2 10" stroke={C.kidShade} strokeWidth="3.5" fill="none" strokeLinecap="round" />
+          </g>
+        );
     }
   };
   const hair = wet ? '#24170f' : C.hair;
@@ -220,8 +227,8 @@ export const KidHead: React.FC<{
       {/* back hair */}
       <path d="M-104 -6 Q -110 -96 -20 -112 Q 70 -122 104 -40 Q 112 -10 102 8 Q 60 -60 -20 -58 Q -80 -50 -104 -6Z" fill={hair} />
       {/* ears */}
-      <ellipse cx="-99" cy="18" rx="16" ry="21" fill="url(#kidSkin)" />
-      <ellipse cx="99" cy="18" rx="16" ry="21" fill="url(#kidSkin)" />
+      <ellipse cx="-99" cy="18" rx="19" ry="25" fill="url(#kidSkin)" />
+      <ellipse cx="99" cy="18" rx="19" ry="25" fill="url(#kidSkin)" />
       <path d="M-102 10 q -6 8 0 18" stroke={C.kidShade} strokeWidth="4" fill="none" strokeLinecap="round" />
       <path d="M102 10 q 6 8 0 18" stroke={C.kidShade} strokeWidth="4" fill="none" strokeLinecap="round" />
       {/* face */}
@@ -231,7 +238,7 @@ export const KidHead: React.FC<{
         d={
           wet
             ? 'M-100 -10 Q -96 -88 -10 -96 Q 80 -100 100 -20 Q 80 -40 60 -30 Q 50 -50 20 -40 Q 0 -60 -24 -44 Q -50 -58 -66 -36 Q -84 -40 -100 -10Z'
-            : 'M-102 -4 Q -104 -92 -8 -100 Q 86 -104 102 -16 Q 86 -50 52 -50 Q 60 -34 40 -28 Q 34 -52 4 -54 Q 0 -32 -24 -30 Q -18 -48 -40 -52 Q -60 -46 -72 -28 Q -88 -30 -102 -4Z'
+            : 'M-102 -8 Q -106 -98 -6 -106 Q 90 -108 102 -22 Q 96 -48 72 -58 Q 44 -66 14 -60 Q -20 -56 -50 -44 Q -40 -30 -66 -26 Q -84 -26 -102 -8Z M-70 -40 Q -40 -76 26 -66 Q -6 -54 -36 -30 Q -52 -26 -70 -40Z'
         }
         fill={hair}
       />
@@ -243,10 +250,10 @@ export const KidHead: React.FC<{
       {eye(-1)}
       {eye(1)}
       {/* eyebrows */}
-      <path d={`M-52 ${-18 - (eyes === 'happy' ? 4 : 0)} q 14 -8 28 -2`} stroke={hair} strokeWidth="5" fill="none" strokeLinecap="round" opacity="0.8" />
-      <path d={`M52 ${-18 - (eyes === 'happy' ? 4 : 0)} q -14 -8 -28 -2`} stroke={hair} strokeWidth="5" fill="none" strokeLinecap="round" opacity="0.8" />
+      <path d={`M-60 ${-14 - (eyes === 'happy' ? 4 : 0)} q 18 -10 38 -4`} stroke={hair} strokeWidth="9" fill="none" strokeLinecap="round" />
+      <path d={`M60 ${-14 - (eyes === 'happy' ? 4 : 0)} q -18 -10 -38 -4`} stroke={hair} strokeWidth="9" fill="none" strokeLinecap="round" />
       {/* nose */}
-      <path d="M-7 40 Q 0 47 7 40" stroke={C.kidShade} strokeWidth="4.5" fill="none" strokeLinecap="round" />
+      <path d="M-9 38 Q 0 48 9 38" stroke={C.kidShade} strokeWidth="5" fill="none" strokeLinecap="round" />
       {mouthEl()}
       {crown > 0 && (
         <g opacity={crown}>
@@ -318,13 +325,19 @@ export const DadHead: React.FC<{mouth?: DadMouth; blinkAmt?: number; open?: numb
           </g>
         );
       default:
-        return <path d="M-90 86 Q -60 112 -28 88" stroke="#7b2f2a" strokeWidth="6" fill="none" strokeLinecap="round" />;
+        return (
+          <g>
+            <path d="M-96 84 Q -60 92 -24 84 Q -32 118 -62 120 Q -90 116 -96 84Z" fill="#5e201c" />
+            <path d="M-92 86 Q -60 94 -28 86 L -31 97 Q -60 103 -89 97Z" fill="#fffaf2" />
+            <path d="M-112 70 q -8 26 6 44 M-12 76 q 12 22 -2 40" stroke={C.skinShade} strokeWidth="4.5" fill="none" strokeLinecap="round" />
+          </g>
+        );
     }
   };
   return (
     <g>
       {/* neck */}
-      <path d="M-40 110 L -30 190 L 50 190 L 52 100 Z" fill={C.skinShade} />
+      <path d="M-36 110 L -26 160 L 46 160 L 48 100 Z" fill={C.skinShade} />
       {/* back of head / hair mass */}
       <path d="M-70 -110 Q 10 -170 90 -110 Q 130 -60 112 20 Q 104 40 92 50 L 40 -40 Z" fill={C.hair} />
       {/* face */}
@@ -333,10 +346,13 @@ export const DadHead: React.FC<{mouth?: DadMouth; blinkAmt?: number; open?: numb
       <ellipse cx="88" cy="10" rx="22" ry="34" fill={C.skin} />
       <path d="M86 -8 q 12 14 0 34" stroke={C.skinShade} strokeWidth="5" fill="none" strokeLinecap="round" />
       {/* stubble */}
-      <path d="M-100 60 Q -90 128 -30 136 Q 46 140 84 86 Q 70 60 40 76 Q 0 84 -30 60 Q -70 50 -100 60Z" fill="#5a4234" opacity="0.13" />
+      <path d="M-100 60 Q -90 128 -30 136 Q 46 140 84 86 Q 70 60 40 76 Q 0 84 -30 60 Q -70 50 -100 60Z" fill="#5a4234" opacity="0.05" />
       {/* hair front */}
       <path d="M-104 -40 Q -118 -128 -30 -150 Q 60 -168 108 -96 Q 122 -60 110 -20 Q 100 -60 70 -74 Q 40 -92 0 -84 Q -30 -96 -60 -78 Q -88 -66 -104 -40Z" fill={C.hair} />
-      <path d="M80 -40 Q 96 -10 92 20 L 104 16 Q 110 -20 104 -50Z" fill={C.hair} />
+      <path d="M-104 -40 Q -118 -150 -20 -168 Q 70 -180 112 -100 Q 100 -128 40 -140 Q -40 -150 -104 -40Z" fill={C.hair} />
+      <path d="M80 -40 Q 96 -10 92 20 L 104 16 Q 110 -20 104 -50Z" fill="#8f8b88" />
+      <path d="M58 -84 Q 98 -76 110 -30 Q 96 -46 70 -58Z" fill="#8f8b88" />
+      <path d="M-70 -128 Q -20 -158 40 -150 M-50 -112 Q 0 -138 60 -128 M30 -100 Q 70 -100 96 -80" stroke="#a7a29e" strokeWidth="4" fill="none" strokeLinecap="round" opacity="0.8" />
       <path d="M-60 -118 Q -10 -140 50 -126" stroke={C.hairHi} strokeWidth="6" fill="none" strokeLinecap="round" opacity="0.6" />
       {/* brows */}
       <path d="M-104 -26 q 16 -12 34 -6" stroke={C.hair} strokeWidth="8" fill="none" strokeLinecap="round" />
@@ -346,8 +362,8 @@ export const DadHead: React.FC<{mouth?: DadMouth; blinkAmt?: number; open?: numb
       {/* cheek */}
       <ellipse cx="-14" cy="62" rx="30" ry="20" fill="url(#cheek)" opacity="0.8" />
       {/* long nose */}
-      <path d="M-56 8 Q -76 40 -118 58 Q -124 70 -108 76 Q -82 80 -62 70" fill={C.skin} stroke={C.skinShade} strokeWidth="4" strokeLinejoin="round" />
-      <path d="M-100 62 q 10 4 20 0" stroke={C.cheek} strokeWidth="4" fill="none" opacity="0.6" strokeLinecap="round" />
+      <path d="M-56 8 Q -72 40 -104 56 Q -112 68 -96 75 Q -78 79 -62 70" fill={C.skin} stroke={C.skinShade} strokeWidth="4" strokeLinejoin="round" />
+      <path d="M-92 62 q 10 4 18 0" stroke={C.cheek} strokeWidth="4" fill="none" opacity="0.6" strokeLinecap="round" />
       {m()}
     </g>
   );
@@ -370,8 +386,8 @@ export const Foot: React.FC<{
   return (
     <g transform={mirror ? 'scale(-1,1)' : undefined}>
       <path d="M-38 -40 Q -44 -66 -16 -62 Q 30 -66 46 -40 Q 52 10 32 50 Q 22 76 -4 76 Q -32 74 -34 40 Q -30 10 -38 -40Z" fill="url(#kidSkin)" stroke={C.kidShade} strokeWidth="3" />
-      <ellipse cx="-4" cy="46" rx="22" ry="20" fill="#f9b8a6" opacity="0.55" />
-      <ellipse cx="2" cy="-30" rx="32" ry="16" fill="#f9b8a6" opacity="0.5" />
+      <ellipse cx="-4" cy="46" rx="22" ry="20" fill="#e7a58a" opacity="0.55" />
+      <ellipse cx="2" cy="-30" rx="32" ry="16" fill="#e7a58a" opacity="0.5" />
       <path d="M-26 0 Q -14 14 -20 30" stroke={C.kidShade} strokeWidth="3" fill="none" opacity="0.5" strokeLinecap="round" />
       {toes.map(([x, y, r], i) => {
         const lift = toeLift[i] || 0;
@@ -380,8 +396,8 @@ export const Foot: React.FC<{
           <g key={i} transform={`translate(${x},${y - lift * 10}) scale(${1 + g * 0.18})`}>
             {g > 0 && <circle r={r * 2.2} fill="#ffe7a8" opacity={0.55 * g} filter="url(#soft4)" />}
             <ellipse rx={r} ry={r * 1.08} fill="url(#kidSkin)" stroke={C.kidShade} strokeWidth="2.5" />
-            <ellipse cx={-r * 0.15} cy={-r * 0.2} rx={r * 0.45} ry={r * 0.35} fill="#fde6d2" opacity="0.8" />
-            <ellipse cy={r * 0.3} rx={r * 0.55} ry={r * 0.4} fill="#f6a99a" opacity="0.4" />
+            <ellipse cx={-r * 0.15} cy={-r * 0.2} rx={r * 0.45} ry={r * 0.35} fill="#efc9aa" opacity="0.8" />
+            <ellipse cy={r * 0.3} rx={r * 0.55} ry={r * 0.4} fill="#d9937a" opacity="0.4" />
           </g>
         );
       })}

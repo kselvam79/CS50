@@ -139,7 +139,7 @@ const Title: React.FC<{t: number}> = ({t}) => {
         <div style={{fontFamily: 'Fraunces', fontWeight: 800, fontSize: 136, color: '#fbeed2', textShadow: '0 6px 40px rgba(0,0,0,0.5)', lineHeight: 1.05}}>
           Daddy Loves
           <br />
-          Your Toes
+          Those Toes
         </div>
         <div style={{fontFamily: 'Fraunces', fontStyle: 'italic', fontSize: 48, color: '#f3dcb4', marginTop: 28, opacity: ramp(t, 2, 3)}}>{story.subtitle}</div>
       </div>

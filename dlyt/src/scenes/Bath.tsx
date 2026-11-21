@@ -146,8 +146,8 @@ export const Bath: React.FC<{t: number}> = ({t}) => {
         </g>
 
         {/* legs + feet (behind foam) */}
-        <Limb a={legBase1} b={[foot1[0] - 4, foot1[1] + 50]} bend={-20} w={46} fill="#f3c6a3" shade={C.kidShade} />
-        <Limb a={legBase2} b={[foot2[0] - 4, foot2[1] + 50]} bend={20} w={46} fill="#f3c6a3" shade={C.kidShade} />
+        <Limb a={legBase1} b={[foot1[0] - 4, foot1[1] + 50]} bend={-20} w={46} fill="#dcaa83" shade={C.kidShade} />
+        <Limb a={legBase2} b={[foot2[0] - 4, foot2[1] + 50]} bend={20} w={46} fill="#dcaa83" shade={C.kidShade} />
         <g transform={`translate(${foot1[0]},${foot1[1]}) rotate(${-14 + kick * 8}) scale(0.95)`}>
           <Foot toeLift={toeLift1} toeGlow={toesWiggle ? toeLift1.map((x) => x * 0.4) : undefined} mirror />
         </g>

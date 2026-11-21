@@ -3,7 +3,7 @@ then writes public/audio.wav and src/timing.json (when each line is spoken).
 
 usage: python build_audio.py <kokoro_dir> <project_dir> [voice]
 """
-import json, sys, os
+import json, sys, os, hashlib
 import numpy as np
 import soundfile as sf
 from kokoro_onnx import Kokoro
@@ -13,13 +13,21 @@ VOICE = sys.argv[3] if len(sys.argv) > 3 else "am_michael"
 SR = 24000
 
 story = json.load(open(os.path.join(PROJ, "story.json")))
-k = Kokoro(f"{KDIR}/kokoro-v1.0.onnx", f"{KDIR}/voices-v1.0.bin")
+k = None if VOICE == "clone" else Kokoro(f"{KDIR}/kokoro-v1.0.onnx", f"{KDIR}/voices-v1.0.bin")
 cache = os.path.join(PROJ, "tools", "cache")
 os.makedirs(cache, exist_ok=True)
 
 
 def say(text, speed):
-    key = f"{VOICE}_{speed}_{abs(hash(text)) % 10**12}.wav"
+    if VOICE == "clone":
+        a, sr = sf.read(os.path.join(cache, "clone", hashlib.md5(text.encode()).hexdigest() + ".wav"))
+        if sr != SR:  # resample (linear is fine for speech at these rates)
+            x = np.arange(int(len(a) * SR / sr)) * sr / SR
+            a = np.interp(x, np.arange(len(a)), a)
+        idx = np.where(np.abs(a) > 0.01)[0]
+        a = a[max(0, idx[0] - 600): idx[-1] + 1800]
+        return a / max(1e-6, np.abs(a).max()) * 0.8
+    key = f"{VOICE}_{speed}_{hashlib.md5(text.encode()).hexdigest()}.wav"
     p = os.path.join(cache, key)
     if os.path.exists(p):
         a, _ = sf.read(p)
