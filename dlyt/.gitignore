@@ -1,0 +1,7 @@
+node_modules/
+out/
+stills/
+tools/cache/
+public/audio.wav
+public/grain.png
+public/paper.png
