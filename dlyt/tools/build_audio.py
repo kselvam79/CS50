@@ -54,20 +54,20 @@ for si, st in enumerate(story["stanzas"]):
         if prev_scene is not None:
             t += PAGE_TURN
         scenes.append({"scene": st["scene"], "start": round(t, 3)})
-        t += 1.6  # let the new picture land before reading
+        t += 1.2  # let the new picture land before reading
         prev_scene = st["scene"]
     else:
         t += 0.6
     s_start = t
     speed = 0.8 if song else (0.78 if ending else 0.88)
-    gap = 0.95 if song else (1.4 if ending else 0.55)
+    gap = 0.8 if song else (1.2 if ending else 0.42)
     for li, line in enumerate(st["lines"]):
         a = say(line, speed)
         dur = len(a) / SR
         voice_track.append((t, a))
         lines_out.append({"stanza": si, "line": li, "start": round(t, 3), "end": round(t + dur, 3), "text": line})
         t += dur + gap
-    t += 1.2 if not ending else 7.0
+    t += 0.8 if not ending else 5.5
     stanzas_out.append({"start": round(s_start, 3), "end": round(t, 3), "scene": st["scene"]})
 
 TOTAL = t + 1.0

@@ -20,7 +20,7 @@ for i, (song, text) in enumerate(lines):
     speak = text.replace("tozies", "toesies").replace("Tozies", "Toesies").replace("tozy", "toesy")
     expect = len(text) / 14.0  # rough seconds at a calm pace
     for attempt in range(4):
-        torch.manual_seed(1234 + i + 1000 * attempt)
+        torch.manual_seed(int(os.environ.get("SEED", 1234)) + i + 1000 * attempt)
         wav = m.generate(speak, audio_prompt_path=ref, exaggeration=0.4 if song else 0.5, cfg_weight=0.5)
         a = wav[0].abs()
         loud = (a > 0.02).nonzero()
