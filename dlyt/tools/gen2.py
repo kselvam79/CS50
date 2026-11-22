@@ -18,6 +18,7 @@ args = sys.argv[1:]
 out, faces, pages = args[0], args[1], args[2].split(",")
 src = args[args.index("--from") + 1] if "--from" in args else None
 N = int(args[args.index("--n") + 1]) if "--n" in args else 4
+STRENGTH = float(args[args.index("--strength") + 1]) if "--strength" in args else 0.55
 os.makedirs(out, exist_ok=True)
 
 # ethnic look per scene; Dad and son always share it
@@ -42,7 +43,7 @@ def prompt(page):
     bed_room = "patchwork quilt, lamp, moon in window"
     P = {
         "bath1": f"{dad(look, 'light blue shirt')} kneeling on the floor outside the tub, {kid(look)} in the bubble bath, foam up to his chest with foam up to his chest, {bath_room}",
-        "bath2": f"{dad(look, 'light blue shirt')} laughing, {kid(look)} shirtless in a bubble bath lifting his bare feet out of the foam, {bath_room}",
+        "bath2": f"{dad(look, 'light blue shirt')} laughing, {kid(look)} with bare chest, no shirt, in the bubble bath lifting his bare feet out of the foam, {bath_room}",
         "towel": f"{dad(look, 'light blue shirt')} holding {kid(look)} wrapped in a hooded bath towel, cozy bathroom",
         "pjs1": f"{dad(look, 'gray pajama top')} helping {kid(look)} put on star pajamas, sitting on a rug, {bed_room}",
         "pjs2": f"{dad(look, 'gray pajama top')} tugging a star pajama leg, {kid(look)} with one bare foot popping out of the pajama cuff, {bed_room}",
@@ -95,7 +96,7 @@ for page in pages:
             pipe.set_ip_adapter_scale([[0.0, 0.0]])
             kw.update(ip_adapter_image=[[dad_face, kid_face]])
         if base is not None:
-            img = i2i(image=base, strength=0.55, **kw).images[0]
+            img = i2i(image=base, strength=STRENGTH, **kw).images[0]
         else:
             img = pipe(width=W, height=H, **kw).images[0]
         if nopeople:
