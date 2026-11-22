@@ -18,3 +18,10 @@ npx remotion render src/index.ts DaddyLovesYourToes out/daddy-loves-your-toes.mp
 ```
 Kokoro model files: `kokoro-v1.0.onnx` and `voices-v1.0.bin` from the kokoro-onnx releases (`pip install kokoro-onnx soundfile`).
 Other voices to try: `am_michael`, `bm_george`, `bm_lewis`.
+
+## Painted pages (v2)
+
+The current video uses painted pages instead of vector scenes. `tools/gen.py` paints
+candidates with sd-turbo (CPU, ~25 s each), `tools/picks.txt` records the chosen one per
+page, and `tools/refine.py` upscales the picks to 1920×1080 into `public/pages/`.
+Render with the `Painted` composition.
