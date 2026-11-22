@@ -28,16 +28,18 @@ def say(text, speed):
         idx = np.where(np.abs(a) > 0.01)[0]
         a = a[max(0, idx[0] - 600): idx[-1] + 1800]
         return a / max(1e-6, np.abs(a).max()) * 0.8
-    key = f"{VOICE}_{speed}_{PITCH}_{hashlib.md5(text.encode()).hexdigest()}.wav"
+    key = f"{VOICE}_{speed}_rs{PITCH}_{hashlib.md5(text.encode()).hexdigest()}.wav"
     p = os.path.join(cache, key)
     if os.path.exists(p):
         a, _ = sf.read(p)
         return a
-    a, sr = k.create(text, voice=VOICE, speed=speed, lang="en-us")
+    # deeper voice without artifacts: speak a little faster, then play it back slower
+    f = 2 ** (-PITCH / 12)
+    a, sr = k.create(text, voice=VOICE, speed=speed * f, lang="en-us")
     assert sr == SR
     if PITCH:
         import librosa
-        a = librosa.effects.pitch_shift(a.astype(np.float32), sr=SR, n_steps=PITCH)
+        a = librosa.resample(a.astype(np.float32), orig_sr=SR, target_sr=int(round(SR * f)), res_type="soxr_hq")
     # trim silence at the ends
     idx = np.where(np.abs(a) > 0.01)[0]
     a = a[max(0, idx[0] - 600): idx[-1] + 1800]
@@ -46,8 +48,11 @@ def say(text, speed):
 
 
 # ---------- timeline ----------
-TITLE = 7.0
-PAGE_TURN = 2.4
+TITLE = float(os.environ.get("TITLE", "7.0"))
+PAGE_TURN = float(os.environ.get("PAGE_TURN", "2.4"))
+LAND = float(os.environ.get("LAND", "1.2"))
+SFX = os.environ.get("SFX", "1") == "1"
+MUSIC = float(os.environ.get("MUSIC", "1.0"))
 t = TITLE
 lines_out, stanzas_out, scenes = [], [], []
 voice_track = []  # (start_sec, samples)
@@ -58,7 +63,7 @@ for si, st in enumerate(story["stanzas"]):
         if prev_scene is not None:
             t += PAGE_TURN
         scenes.append({"scene": st["scene"], "start": round(t, 3)})
-        t += 1.2  # let the new picture land before reading
+        t += LAND  # let the new picture land before reading
         prev_scene = st["scene"]
     else:
         t += 0.6
@@ -208,7 +213,7 @@ for sc in scenes[1:]:  # page-turn swish
     swish = np.convolve(rng.standard_normal(len(m)), np.ones(30) / 30, "same") * np.sin(np.pi * m / 0.9) ** 2
     addfx(0.5 * swish, sc["start"] - 1.6)
 
-mix = voice * 1.0 + music * 1.0 + sfx
+mix = voice * 1.0 + music * MUSIC + (sfx if SFX else 0)
 mix = mix / max(1e-6, np.abs(mix).max()) * 0.89
 # make it stereo, music slightly wide
 stereo = np.stack([mix, mix], 1)

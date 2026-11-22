@@ -1,0 +1,81 @@
+import React from 'react';
+import {AbsoluteFill, Audio, Img, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import '@fontsource/fraunces/600.css';
+import '@fontsource/fraunces/800.css';
+import '@fontsource/fraunces/400-italic.css';
+import timing from './timing.json';
+import story from '../story.json';
+import {LINES, ramp} from './lib';
+
+// Still picture book: one page per two lines, no animation, short dissolve between pages.
+type Page = {lines: typeof LINES; start: number; end: number};
+const PAGES: Page[] = [];
+for (let s = 0; s < story.stanzas.length; s++) {
+  const ls = LINES.filter((l) => l.stanza === s);
+  for (let k = 0; k < ls.length; k += 2) PAGES.push({lines: ls.slice(k, k + 2), start: 0, end: 0});
+}
+PAGES.forEach((p, i) => {
+  const prevEnd = i === 0 ? timing.title : PAGES[i - 1].lines[PAGES[i - 1].lines.length - 1].end;
+  p.start = i === 0 ? timing.title : (prevEnd + p.lines[0].start) / 2;
+});
+PAGES.forEach((p, i) => (p.end = i + 1 < PAGES.length ? PAGES[i + 1].start : timing.total));
+
+const FADE = 0.5;
+const pic = (i: number) => staticFile(`pages/p${String(i).padStart(2, '0')}.png`);
+
+const PageView: React.FC<{i: number}> = ({i}) => (
+  <AbsoluteFill style={{background: '#f6ecd9'}}>
+    <Img src={pic(i)} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
+    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 36}}>
+      <div style={{background: 'rgba(34,18,12,0.72)', borderRadius: 28, padding: '20px 60px 24px', maxWidth: 1700, border: '2px solid rgba(246,234,212,0.2)'}}>
+        {PAGES[i].lines.map((l, k) => (
+          <div key={k} style={{fontFamily: 'Fraunces', fontWeight: 600, fontSize: 48, lineHeight: 1.34, color: '#fff3d6', textAlign: 'center'}}>
+            {l.text}
+          </div>
+        ))}
+      </div>
+    </AbsoluteFill>
+  </AbsoluteFill>
+);
+
+const Title: React.FC = () => (
+  <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', background: '#2a1710'}}>
+    <Img src={pic(0)} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover', opacity: 0.35}} />
+    <div style={{textAlign: 'center'}}>
+      <div style={{fontFamily: 'Fraunces', fontWeight: 800, fontSize: 140, color: '#fbeed2', lineHeight: 1.05, textShadow: '0 6px 40px rgba(0,0,0,0.6)'}}>
+        Daddy Loves
+        <br />
+        Those Toes
+      </div>
+      <div style={{fontFamily: 'Fraunces', fontStyle: 'italic', fontSize: 50, color: '#f3dcb4', marginTop: 28}}>{story.subtitle}</div>
+    </div>
+  </AbsoluteFill>
+);
+
+export const PAGE_COUNT = PAGES.length;
+
+export const Pages: React.FC = () => {
+  const frame = useCurrentFrame();
+  const {fps, durationInFrames} = useVideoConfig();
+  const t = frame / fps;
+  let i = -1;
+  PAGES.forEach((p, k) => {
+    if (t >= p.start) i = k;
+  });
+  const fade = i >= 0 ? ramp(t, PAGES[i].start, PAGES[i].start + FADE) : 1;
+  const edge = Math.max(1 - ramp(t, 0, 0.6), ramp(frame, durationInFrames - 40, durationInFrames - 1));
+  return (
+    <AbsoluteFill style={{background: '#140a07'}}>
+      <Audio src={staticFile('audio.wav')} />
+      {i < 0 && <Title />}
+      {i === 0 && fade < 1 && <Title />}
+      {i > 0 && fade < 1 && <PageView i={i - 1} />}
+      {i >= 0 && (
+        <AbsoluteFill style={{opacity: fade}}>
+          <PageView i={i} />
+        </AbsoluteFill>
+      )}
+      <AbsoluteFill style={{background: '#000', opacity: edge}} />
+    </AbsoluteFill>
+  );
+};
