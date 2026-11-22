@@ -24,24 +24,24 @@ os.makedirs(out, exist_ok=True)
 LOOK = {"bath": "Indian", "towel": "African", "pjs": "Caucasian", "toes": "Chinese", "song": "Indian", "night": "African"}
 SCENE = {"bath1": "bath", "bath2": "bath", "towel": "towel", "pjs1": "pjs", "pjs2": "pjs", "toes1": "toes", "toes2": "toes",
          "toes3": "toes", "toes4": "toes", "song1": "song", "song2": "song", "night": "night", "title": "night"}
-STYLE = ", storybook watercolor illustration, warm cozy light"
-NEG = "extra arms, extra hands, extra legs, extra people, two children, two men, deformed, ugly, text, watermark"
+STYLE = ", children's book watercolor illustration, painterly"
+NEG = "photo, photorealistic, 3d render, extra arms, extra hands, extra legs, extra people, two children, two men, deformed, ugly, text, watermark"
 
 
 def dad(look, top):
-    return f"a {look} dad on the left, short dark hair graying at the temples, {top}"
+    return f"a 45 year old {look} father on the left, gray temples, {top}"
 
 
 def kid(look):
-    return f"a small {look} 3 year old toddler boy on the right, short dark hair, big smile"
+    return f"a tiny 3 year old {look} toddler boy on the right"
 
 
 def prompt(page):
     look = LOOK[SCENE[page]]
-    bath_room = "white bathtub, bubbles, rubber duck, cozy bathroom"
-    bed_room = "small bed with a patchwork quilt, warm lamp, moon in the window, cozy bedroom"
+    bath_room = "bubbles, rubber duck"
+    bed_room = "patchwork quilt, lamp, moon in window"
     P = {
-        "bath1": f"{dad(look, 'light blue shirt')} kneeling by the tub, {kid(look)} shirtless in a bubble bath with foam up to his chest, {bath_room}",
+        "bath1": f"{dad(look, 'light blue shirt')} kneeling on the floor outside the tub, {kid(look)} in the bubble bath, foam up to his chest with foam up to his chest, {bath_room}",
         "bath2": f"{dad(look, 'light blue shirt')} laughing, {kid(look)} shirtless in a bubble bath lifting his bare feet out of the foam, {bath_room}",
         "towel": f"{dad(look, 'light blue shirt')} holding {kid(look)} wrapped in a hooded bath towel, cozy bathroom",
         "pjs1": f"{dad(look, 'gray pajama top')} helping {kid(look)} put on star pajamas, sitting on a rug, {bed_room}",
@@ -65,7 +65,7 @@ pipe.scheduler = LCMScheduler.from_config(pipe.scheduler.config)
 pipe.load_lora_weights("latent-consistency/lcm-lora-sdv1-5")
 pipe.fuse_lora()
 pipe.load_ip_adapter("h94/IP-Adapter", subfolder="models", weight_name="ip-adapter-plus-face_sd15.bin")
-pipe.set_ip_adapter_scale([[0.55, 0.55]])
+pipe.set_ip_adapter_scale([[0.45, 0.45]])
 i2i = AutoPipelineForImage2Image.from_pipe(pipe)
 print("loaded in %.0fs" % (time.time() - t0), flush=True)
 
@@ -82,11 +82,13 @@ for page in pages:
     nopeople = page == "title"
     for seed in range(N):
         f = f"{out}/{page}_{seed}.png"
+        if os.path.exists(f) and page not in pages[:0]:
+            pass
         if os.path.exists(f):
             continue
         t = time.time()
         g = torch.manual_seed(300 + seed)
-        kw = dict(prompt=p, negative_prompt=NEG, num_inference_steps=6, guidance_scale=1.6, generator=g)
+        kw = dict(prompt=STYLE.strip(", ") + ", " + p.replace(STYLE, ""), negative_prompt=NEG, num_inference_steps=6, guidance_scale=1.8, generator=g)
         if not nopeople:
             kw.update(ip_adapter_image=[[dad_face, kid_face]], cross_attention_kwargs={"ip_adapter_masks": masks})
         else:
