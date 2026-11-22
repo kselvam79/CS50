@@ -12,7 +12,7 @@ opt = lambda k, d: args[args.index(k) + 1] if k in args else d
 TAG = opt("--tag", "a")
 os.makedirs(out, exist_ok=True)
 
-LOOKS = ["Indian", "Black African", "white Caucasian", "Chinese"]
+LOOKS = ["Indian", "Black African (deep brown skin, short tightly coiled black hair, the father's graying at the temples)", "white Caucasian", "Chinese"]
 BATH = "a cozy bathroom with a white bathtub full of bubbles, evening light"
 BED = "a cozy bedroom with a small wooden bed and a colorful patchwork quilt, warm lamp light"
 NIGHT = "the same cozy bedroom at night, dim warm lamp, full moon in the window"
@@ -20,9 +20,9 @@ BATHWEAR = "The boy is in the bubble bath, covered in foam up to his shoulders."
 PJ = "The boy wears blue pajamas with yellow stars."
 PAGES = [
     ("The father kneels beside the bathtub smiling while the boy sits in the bubble bath with a yellow rubber duck.", BATH, BATHWEAR),
-    ("The boy lifts his two little feet up out of the bubbles, ten tiny toes showing, and the father looks at them in delight.", BATH, BATHWEAR),
-    ("The boy kicks and splashes in the bubble bath, laughing, the soles of his little feet visible; the father laughs beside the tub.", BATH, BATHWEAR),
-    ("The boy holds up a yellow rubber duck while soap bubbles float and pop in the air; the father smiles beside the tub.", BATH, BATHWEAR),
+    ("The boy peeks over a big mound of bubbles with a foam hat on his head, and the father looks at him in delight.", BATH, BATHWEAR),
+    ("The boy splashes the bubbles with his hands, laughing; the father laughs beside the tub with foam on his nose.", BATH, BATHWEAR),
+    ("The boy holds up a yellow rubber duck while soap bubbles float in the air; the father smiles beside the tub.", BATH, BATHWEAR),
     ("The father wraps the boy in a big fluffy white towel and dries his little feet.", "the same cozy bathroom", "The boy is wrapped in a big white towel."),
     ("The father gently touches the tip of the boy's nose with one finger; the boy giggles.", "the same cozy bathroom", "The boy is bundled in a white hooded towel, bare feet peeking out."),
     ("The father helps the boy pull a pajama top over his head.", BED, PJ),
@@ -77,7 +77,8 @@ def paint(i):
         capture_output=True, text=True)
     try:
         d = json.loads(r.stdout)
-        open(f, "wb").write(base64.b64decode(d["data"][0]["b64_json"]))
+        png = base64.b64decode(d["data"][0]["b64_json"])
+        open(f, "wb").write(png)
         return i, "ok"
     except Exception:
         return i, (r.stdout or r.stderr)[:300]

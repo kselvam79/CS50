@@ -24,17 +24,15 @@ const FADE = 0.5;
 const pic = (i: number) => staticFile(`pages/p${String(i).padStart(2, '0')}.png`);
 
 const PageView: React.FC<{i: number}> = ({i}) => (
-  <AbsoluteFill style={{background: '#f6ecd9'}}>
-    <Img src={pic(i)} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
-    <AbsoluteFill style={{justifyContent: 'flex-end', alignItems: 'center', paddingBottom: 36}}>
-      <div style={{background: 'rgba(34,18,12,0.72)', borderRadius: 28, padding: '20px 60px 24px', maxWidth: 1700, border: '2px solid rgba(246,234,212,0.2)'}}>
-        {PAGES[i].lines.map((l, k) => (
-          <div key={k} style={{fontFamily: 'Fraunces', fontWeight: 600, fontSize: 48, lineHeight: 1.34, color: '#fff3d6', textAlign: 'center'}}>
-            {l.text}
-          </div>
-        ))}
-      </div>
-    </AbsoluteFill>
+  <AbsoluteFill style={{background: '#f7efdf', alignItems: 'center'}}>
+    <Img src={pic(i)} style={{marginTop: 28, width: 1296, height: 864, objectFit: 'cover', borderRadius: 18, boxShadow: '0 10px 40px rgba(60,30,10,0.28)'}} />
+    <div style={{height: 188, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
+      {PAGES[i].lines.map((l, k) => (
+        <div key={k} style={{fontFamily: 'Fraunces', fontWeight: 600, fontSize: 46, lineHeight: 1.32, color: '#3a2216', textAlign: 'center'}}>
+          {l.text}
+        </div>
+      ))}
+    </div>
   </AbsoluteFill>
 );
 
