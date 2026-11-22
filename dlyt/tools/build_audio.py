@@ -10,6 +10,7 @@ from kokoro_onnx import Kokoro
 
 KDIR, PROJ = sys.argv[1], sys.argv[2]
 VOICE = sys.argv[3] if len(sys.argv) > 3 else "am_michael"
+PITCH = float(os.environ.get("PITCH", "0"))  # semitones, e.g. -2 for a deeper read
 SR = 24000
 
 story = json.load(open(os.path.join(PROJ, "story.json")))
@@ -27,13 +28,16 @@ def say(text, speed):
         idx = np.where(np.abs(a) > 0.01)[0]
         a = a[max(0, idx[0] - 600): idx[-1] + 1800]
         return a / max(1e-6, np.abs(a).max()) * 0.8
-    key = f"{VOICE}_{speed}_{hashlib.md5(text.encode()).hexdigest()}.wav"
+    key = f"{VOICE}_{speed}_{PITCH}_{hashlib.md5(text.encode()).hexdigest()}.wav"
     p = os.path.join(cache, key)
     if os.path.exists(p):
         a, _ = sf.read(p)
         return a
     a, sr = k.create(text, voice=VOICE, speed=speed, lang="en-us")
     assert sr == SR
+    if PITCH:
+        import librosa
+        a = librosa.effects.pitch_shift(a.astype(np.float32), sr=SR, n_steps=PITCH)
     # trim silence at the ends
     idx = np.where(np.abs(a) > 0.01)[0]
     a = a[max(0, idx[0] - 600): idx[-1] + 1800]

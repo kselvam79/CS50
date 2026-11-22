@@ -1,103 +1,103 @@
 {
- "total": 201.42,
+ "total": 200.953,
  "title": 7.0,
  "pageTurn": 2.4,
  "scenes": [
   {
    "scene": "bath",
    "start": 7.0,
-   "end": 36.323
+   "end": 36.24
   },
   {
    "scene": "towel",
-   "start": 36.323,
-   "end": 52.741
+   "start": 36.24,
+   "end": 52.655
   },
   {
    "scene": "pjs",
-   "start": 52.741,
-   "end": 82.807
+   "start": 52.655,
+   "end": 82.68
   },
   {
    "scene": "toes",
-   "start": 82.807,
-   "end": 140.376
+   "start": 82.68,
+   "end": 140.074
   },
   {
    "scene": "song",
-   "start": 140.376,
-   "end": 171.973
+   "start": 140.074,
+   "end": 171.581
   },
   {
    "scene": "night",
-   "start": 171.973,
-   "end": 201.42
+   "start": 171.581,
+   "end": 200.953
   }
  ],
  "stanzas": [
   {
    "start": 8.2,
-   "end": 20.492,
+   "end": 20.445,
    "scene": "bath"
   },
   {
-   "start": 21.092,
-   "end": 33.923,
+   "start": 21.045,
+   "end": 33.84,
    "scene": "bath"
   },
   {
-   "start": 37.523,
-   "end": 50.341,
+   "start": 37.44,
+   "end": 50.255,
    "scene": "towel"
   },
   {
-   "start": 53.941,
-   "end": 67.115,
+   "start": 53.855,
+   "end": 67.004,
    "scene": "pjs"
   },
   {
-   "start": 67.715,
-   "end": 80.407,
+   "start": 67.604,
+   "end": 80.28,
    "scene": "pjs"
   },
   {
-   "start": 84.007,
-   "end": 97.631,
+   "start": 83.88,
+   "end": 97.446,
    "scene": "toes"
   },
   {
-   "start": 98.231,
-   "end": 110.177,
+   "start": 98.046,
+   "end": 109.959,
    "scene": "toes"
   },
   {
-   "start": 110.777,
-   "end": 124.445,
+   "start": 110.559,
+   "end": 124.2,
    "scene": "toes"
   },
   {
-   "start": 125.045,
-   "end": 137.976,
+   "start": 124.8,
+   "end": 137.674,
    "scene": "toes"
   },
   {
-   "start": 141.576,
-   "end": 153.627,
+   "start": 141.274,
+   "end": 153.283,
    "scene": "song"
   },
   {
-   "start": 154.227,
-   "end": 169.573,
+   "start": 153.883,
+   "end": 169.181,
    "scene": "song"
   },
   {
-   "start": 173.173,
-   "end": 186.034,
+   "start": 172.781,
+   "end": 185.576,
    "scene": "night"
   },
   {
-   "start": 186.634,
-   "end": 200.42,
+   "start": 186.176,
+   "end": 199.953,
    "scene": "night"
   }
  ],
@@ -106,350 +106,350 @@
    "stanza": 0,
    "line": 0,
    "start": 8.2,
-   "end": 10.718,
+   "end": 10.709,
    "text": "Splish goes the water and splash goes the tub,"
   },
   {
    "stanza": 0,
    "line": 1,
-   "start": 11.138,
-   "end": 13.5,
+   "start": 11.129,
+   "end": 13.47,
    "text": "it's bubbles and duckies and rub-a-dub-dub."
   },
   {
    "stanza": 0,
    "line": 2,
-   "start": 13.919,
-   "end": 16.399,
+   "start": 13.89,
+   "end": 16.352,
    "text": "And what's peeking up from the bubbles? Oh my!"
   },
   {
    "stanza": 0,
    "line": 3,
-   "start": 16.819,
-   "end": 19.272,
+   "start": 16.772,
+   "end": 19.225,
    "text": "Ten little tozies say, \"Hi, Daddy, hi!\""
   },
   {
    "stanza": 1,
    "line": 0,
-   "start": 21.092,
-   "end": 23.529,
+   "start": 21.045,
+   "end": 23.477,
    "text": "Here are the tozies, on the bottom of your feet,"
   },
   {
    "stanza": 1,
    "line": 1,
-   "start": 23.949,
-   "end": 26.959,
+   "start": 23.897,
+   "end": 26.908,
    "text": "the heel's on the other side. Kick, splash, how neat!"
   },
   {
    "stanza": 1,
    "line": 2,
-   "start": 27.379,
-   "end": 29.91,
+   "start": 27.328,
+   "end": 29.842,
    "text": "The duck says a quack, and the bubbles go pop,"
   },
   {
    "stanza": 1,
    "line": 3,
-   "start": 30.33,
-   "end": 32.703,
+   "start": 30.262,
+   "end": 32.62,
    "text": "and ten little tozies say, \"Don't ever stop!\""
   },
   {
    "stanza": 2,
    "line": 0,
-   "start": 37.523,
-   "end": 40.299,
+   "start": 37.44,
+   "end": 40.212,
    "text": "Then out with a whoosh, in a towel warm and wide,"
   },
   {
    "stanza": 2,
    "line": 1,
-   "start": 40.719,
-   "end": 43.24,
+   "start": 40.632,
+   "end": 43.153,
    "text": "I dry every tozy, from side to side."
   },
   {
    "stanza": 2,
    "line": 2,
-   "start": 43.66,
-   "end": 45.885,
+   "start": 43.573,
+   "end": 45.797,
    "text": "A rub on your head and a boop on your nose,"
   },
   {
    "stanza": 2,
    "line": 3,
-   "start": 46.305,
-   "end": 49.121,
+   "start": 46.217,
+   "end": 49.035,
    "text": "and one extra kiss for those just-washed toes."
   },
   {
    "stanza": 3,
    "line": 0,
-   "start": 53.941,
-   "end": 56.919,
+   "start": 53.855,
+   "end": 56.839,
    "text": "Then into pyjamas, all stars and moons bright,"
   },
   {
    "stanza": 3,
    "line": 1,
-   "start": 57.339,
-   "end": 60.05,
+   "start": 57.259,
+   "end": 59.971,
    "text": "the top goes on easy, the bottoms are tight."
   },
   {
    "stanza": 3,
    "line": 2,
-   "start": 60.47,
-   "end": 62.706,
+   "start": 60.391,
+   "end": 62.604,
    "text": "I wiggle one leg in, and what do you know?"
   },
   {
    "stanza": 3,
    "line": 3,
-   "start": 63.126,
-   "end": 65.895,
+   "start": 63.024,
+   "end": 65.784,
    "text": "Pop! Out at the bottom, five tozies say hello!"
   },
   {
    "stanza": 4,
    "line": 0,
-   "start": 67.715,
-   "end": 70.185,
+   "start": 67.604,
+   "end": 70.053,
    "text": "The other leg now, it goes tug, tug, and whee!"
   },
   {
    "stanza": 4,
    "line": 1,
-   "start": 70.605,
-   "end": 73.028,
+   "start": 70.473,
+   "end": 72.897,
    "text": "Five more little tozies come waving at me."
   },
   {
    "stanza": 4,
    "line": 2,
-   "start": 73.448,
-   "end": 75.537,
+   "start": 73.317,
+   "end": 75.411,
    "text": "\"Hey, little tozies, get up in those sheets!"
   },
   {
    "stanza": 4,
    "line": 3,
-   "start": 75.957,
-   "end": 79.187,
+   "start": 75.831,
+   "end": 79.06,
    "text": "Come sleep right next to me, with your little tozy feet!\""
   },
   {
    "stanza": 5,
    "line": 0,
-   "start": 84.007,
-   "end": 86.756,
+   "start": 83.88,
+   "end": 86.625,
    "text": "So climb up on Daddy, your head by my knees,"
   },
   {
    "stanza": 5,
    "line": 1,
-   "start": 87.176,
-   "end": 90.445,
+   "start": 87.045,
+   "end": 90.312,
    "text": "your tozies by my cheeks, if you please, if you please."
   },
   {
    "stanza": 5,
    "line": 2,
-   "start": 90.865,
-   "end": 93.42,
+   "start": 90.732,
+   "end": 93.267,
    "text": "Here's one little tozy, and here's tozy two."
   },
   {
    "stanza": 5,
    "line": 3,
-   "start": 93.84,
-   "end": 96.411,
+   "start": 93.687,
+   "end": 96.226,
    "text": "Those three in the middle? I don't know them. Do you?"
   },
   {
    "stanza": 6,
    "line": 0,
-   "start": 98.231,
-   "end": 100.615,
+   "start": 98.046,
+   "end": 100.429,
    "text": "Then five on the other, so cuddly and small,"
   },
   {
    "stanza": 6,
    "line": 1,
-   "start": 101.035,
-   "end": 103.196,
+   "start": 100.849,
+   "end": 103.0,
    "text": "ten little tozies, and I love them all."
   },
   {
    "stanza": 6,
    "line": 2,
-   "start": 103.616,
-   "end": 106.008,
+   "start": 103.42,
+   "end": 105.809,
    "text": "You giggle and squirm when I tickle your feet,"
   },
   {
    "stanza": 6,
    "line": 3,
-   "start": 106.428,
-   "end": 108.957,
+   "start": 106.229,
+   "end": 108.739,
    "text": "you tell me they're stinky, I tell you they're sweet."
   },
   {
    "stanza": 7,
    "line": 0,
-   "start": 110.777,
-   "end": 113.679,
+   "start": 110.559,
+   "end": 113.455,
    "text": "\"Why do I need tozies, when Daddy has big feet?\""
   },
   {
    "stanza": 7,
    "line": 1,
-   "start": 114.099,
-   "end": 116.561,
+   "start": 113.875,
+   "end": 116.329,
    "text": "So Daddy can kiss them, and tickle, and eat!"
   },
   {
    "stanza": 7,
    "line": 2,
-   "start": 116.981,
-   "end": 119.756,
+   "start": 116.749,
+   "end": 119.52,
    "text": "They're the most important part when you walk around,"
   },
   {
    "stanza": 7,
    "line": 3,
-   "start": 120.176,
-   "end": 123.225,
+   "start": 119.94,
+   "end": 122.98,
    "text": "they keep you nice and steady, so you don't fall down."
   },
   {
    "stanza": 8,
    "line": 0,
-   "start": 125.045,
-   "end": 127.896,
+   "start": 124.8,
+   "end": 127.633,
    "text": "They ran out to meet me when I came through the door,"
   },
   {
    "stanza": 8,
    "line": 1,
-   "start": 128.316,
-   "end": 130.991,
+   "start": 128.053,
+   "end": 130.709,
    "text": "they danced in the kitchen and stomped on the floor."
   },
   {
    "stanza": 8,
    "line": 2,
-   "start": 131.411,
-   "end": 133.734,
+   "start": 131.129,
+   "end": 133.447,
    "text": "These tozies look yummy, a tozy treat!"
   },
   {
    "stanza": 8,
    "line": 3,
-   "start": 134.154,
-   "end": 136.756,
+   "start": 133.867,
+   "end": 136.454,
    "text": "I'll eat them all up! Nom, nom! Oh, so sweet!"
   },
   {
    "stanza": 9,
    "line": 0,
-   "start": 141.576,
-   "end": 144.001,
+   "start": 141.274,
+   "end": 143.674,
    "text": "Now into your bed, and the lamp's turning low,"
   },
   {
    "stanza": 9,
    "line": 1,
-   "start": 144.421,
-   "end": 146.856,
+   "start": 144.094,
+   "end": 146.528,
    "text": "I'll sing you a tozy song, soft and slow."
   },
   {
    "stanza": 9,
    "line": 2,
-   "start": 147.276,
-   "end": 149.627,
+   "start": 146.948,
+   "end": 149.291,
    "text": "I sing to your nose and I sing to your hair,"
   },
   {
    "stanza": 9,
    "line": 3,
-   "start": 150.047,
-   "end": 152.407,
+   "start": 149.711,
+   "end": 152.063,
    "text": "and I sing to the tozies still wiggling there."
   },
   {
    "stanza": 10,
    "line": 0,
-   "start": 154.227,
-   "end": 156.856,
+   "start": 153.883,
+   "end": 156.508,
    "text": "Sleep, little tozies, so cuddly and neat,"
   },
   {
    "stanza": 10,
    "line": 1,
-   "start": 157.656,
-   "end": 160.751,
+   "start": 157.308,
+   "end": 160.398,
    "text": "the moon's watching over your little tozy feet."
   },
   {
    "stanza": 10,
    "line": 2,
-   "start": 161.551,
-   "end": 164.421,
+   "start": 161.198,
+   "end": 164.048,
    "text": "Snuggle down under, so they won't turn blue,"
   },
   {
    "stanza": 10,
    "line": 3,
-   "start": 165.221,
-   "end": 167.973,
+   "start": 164.848,
+   "end": 167.581,
    "text": "all comfy and cosy, the whole night through."
   },
   {
    "stanza": 11,
    "line": 0,
-   "start": 173.173,
-   "end": 175.813,
+   "start": 172.781,
+   "end": 175.39,
    "text": "Your eyes getting heavy, your yawn big and slow,"
   },
   {
    "stanza": 11,
    "line": 1,
-   "start": 176.233,
-   "end": 178.721,
+   "start": 175.81,
+   "end": 178.287,
    "text": "I tuck in the blanket from top down to toe."
   },
   {
    "stanza": 11,
    "line": 2,
-   "start": 179.141,
-   "end": 182.047,
+   "start": 178.707,
+   "end": 181.61,
    "text": "I'll keep them all warm and all safe while you sleep,"
   },
   {
    "stanza": 11,
    "line": 3,
-   "start": 182.467,
-   "end": 184.814,
+   "start": 182.03,
+   "end": 184.356,
    "text": "ten sleepy tozies, not making a peep."
   },
   {
    "stanza": 12,
    "line": 0,
-   "start": 186.634,
-   "end": 189.638,
+   "start": 186.176,
+   "end": 189.173,
    "text": "From the top of your head to the tip of your nose,"
   },
   {
    "stanza": 12,
    "line": 1,
-   "start": 190.838,
-   "end": 193.72,
+   "start": 190.373,
+   "end": 193.253,
    "text": "oh my, little one, Daddy loves those toes."
   }
  ],
