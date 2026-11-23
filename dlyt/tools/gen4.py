@@ -12,6 +12,11 @@ opt = lambda k, d: args[args.index(k) + 1] if k in args else d
 TAG = opt("--tag", "a")
 os.makedirs(out, exist_ok=True)
 
+STYLES = {
+    "watercolor": "Warm, soft watercolor children's picture-book illustration.",
+    "inkwash": "Loose expressive pen-and-ink line drawing with light watercolor washes: lively scratchy ink lines, lots of white paper showing, a few soft washes of color, witty and warm like a classic British picture book.",
+}
+STYLE = STYLES[os.environ.get("STYLE", "watercolor")]
 LOOKS = ["Indian", "Black African (deep brown skin, short tightly coiled black hair, the father's graying at the temples)", "white Caucasian", "Chinese"]
 BATH = "a cozy bathroom with a white bathtub full of bubbles, evening light"
 BED = "a cozy bedroom with a small wooden bed and a colorful patchwork quilt, warm lamp light"
@@ -51,7 +56,7 @@ def prompt(i):
     look = LOOKS[i % 4]
     act, where, wear = PAGES[i]
     return (
-        "Warm, soft watercolor children's picture-book illustration, wide landscape page. "
+        STYLE + " Wide landscape children's picture-book page. "
         "Exactly two people and no one else: a father and his little son. "
         f"On this page both are {look}: give them both {look} skin tone and ethnic features, clearly father and son. "
         "The father is about 40 years old: keep the face shape, warm smile and short swept-back salt-and-pepper hair "
