@@ -27,6 +27,8 @@ def say(text, speed):
             a = np.interp(x, np.arange(len(a)), a)
         idx = np.where(np.abs(a) > 0.01)[0]
         a = a[max(0, idx[0] - 600): idx[-1] + 1800]
+        if os.environ.get("NONORM") == "1":  # lines already level-matched (own recording)
+            return a
         return a / max(1e-6, np.abs(a).max()) * 0.8
     key = f"{VOICE}_{speed}_rs{PITCH}_{hashlib.md5(text.encode()).hexdigest()}.wav"
     p = os.path.join(cache, key)
