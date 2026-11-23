@@ -13,7 +13,7 @@ export const Cover: React.FC = () => (
       Those Toes
     </div>
     <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, padding: '34px 0 40px', textAlign: 'center', background: 'rgba(253,250,243,0.9)', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 76, color: '#2f2a4a'}}>
-      Written by Kumar and Soren Selvam
+      By Soren and Kumar
     </div>
   </AbsoluteFill>
 );

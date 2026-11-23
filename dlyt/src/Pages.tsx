@@ -49,7 +49,7 @@ const Title: React.FC = () => {
         Daddy Loves Those Toes
       </div>
       <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, padding: ink ? '22px 0 26px' : '0 0 46px', textAlign: 'center', background: ink ? 'rgba(253,250,243,0.88)' : 'transparent', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 52, color, textShadow: ink ? 'none' : '0 4px 20px rgba(0,0,0,0.7)'}}>
-        Written by Kumar and Soren Selvam
+        By Soren and Kumar
       </div>
     </AbsoluteFill>
   );
