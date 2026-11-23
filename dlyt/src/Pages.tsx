@@ -37,15 +37,14 @@ const PageView: React.FC<{i: number}> = ({i}) => (
 );
 
 const Title: React.FC = () => (
-  <AbsoluteFill style={{justifyContent: 'center', alignItems: 'center', background: '#2a1710'}}>
-    <Img src={pic(0)} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover', opacity: 0.35}} />
-    <div style={{textAlign: 'center'}}>
-      <div style={{fontFamily: 'Fraunces', fontWeight: 800, fontSize: 140, color: '#fbeed2', lineHeight: 1.05, textShadow: '0 6px 40px rgba(0,0,0,0.6)'}}>
-        Daddy Loves
-        <br />
-        Those Toes
-      </div>
-      <div style={{fontFamily: 'Fraunces', fontStyle: 'italic', fontSize: 50, color: '#f3dcb4', marginTop: 28}}>{story.subtitle}</div>
+  <AbsoluteFill style={{background: '#2a1710'}}>
+    <Img src={staticFile('pages/cover.png')} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
+    <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(30,14,8,0.62) 0%, rgba(30,14,8,0) 34%, rgba(30,14,8,0) 76%, rgba(30,14,8,0.7) 100%)'}} />
+    <div style={{position: 'absolute', top: 44, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 800, fontSize: 132, color: '#fff3d6', lineHeight: 1.04, textShadow: '0 6px 30px rgba(0,0,0,0.65)'}}>
+      Daddy Loves Those Toes
+    </div>
+    <div style={{position: 'absolute', bottom: 46, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 54, color: '#fff3d6', textShadow: '0 4px 20px rgba(0,0,0,0.7)'}}>
+      Written by Kumar and Soren Selvam
     </div>
   </AbsoluteFill>
 );
