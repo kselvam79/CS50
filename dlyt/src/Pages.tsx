@@ -5,6 +5,7 @@ import '@fontsource/fraunces/800.css';
 import '@fontsource/fraunces/400-italic.css';
 import timing from './timing.json';
 import story from '../story.json';
+import look from './look.json';
 import {LINES, ramp} from './lib';
 
 // Still picture book: one page per two lines, no animation, short dissolve between pages.
@@ -36,17 +37,23 @@ const PageView: React.FC<{i: number}> = ({i}) => (
   </AbsoluteFill>
 );
 
-const Title: React.FC = () => (
-  <AbsoluteFill style={{background: '#fdfaf3'}}>
-    <Img src={staticFile('pages/cover.png')} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
-    <div style={{position: 'absolute', top: 40, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 800, fontSize: 138, color: '#2f2a4a', lineHeight: 1.04}}>
-      Daddy Loves Those Toes
-    </div>
-    <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, padding: '22px 0 26px', textAlign: 'center', background: 'rgba(253,250,243,0.88)', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 52, color: '#2f2a4a'}}>
-      Written by Kumar and Soren Selvam
-    </div>
-  </AbsoluteFill>
-);
+// look.json says which picture set is installed in public/pages: ink-wash (white paper cover) or watercolor.
+const Title: React.FC = () => {
+  const ink = look.ink;
+  const color = ink ? '#2f2a4a' : '#fff3d6';
+  return (
+    <AbsoluteFill style={{background: ink ? '#fdfaf3' : '#2a1710'}}>
+      <Img src={staticFile('pages/cover.png')} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
+      {!ink && <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(30,14,8,0.62) 0%, rgba(30,14,8,0) 34%, rgba(30,14,8,0) 76%, rgba(30,14,8,0.7) 100%)'}} />}
+      <div style={{position: 'absolute', top: 42, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 800, fontSize: 134, color, lineHeight: 1.04, textShadow: ink ? 'none' : '0 6px 30px rgba(0,0,0,0.65)'}}>
+        Daddy Loves Those Toes
+      </div>
+      <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, padding: ink ? '22px 0 26px' : '0 0 46px', textAlign: 'center', background: ink ? 'rgba(253,250,243,0.88)' : 'transparent', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 52, color, textShadow: ink ? 'none' : '0 4px 20px rgba(0,0,0,0.7)'}}>
+        Written by Kumar and Soren Selvam
+      </div>
+    </AbsoluteFill>
+  );
+};
 
 export const PAGE_COUNT = PAGES.length;
 

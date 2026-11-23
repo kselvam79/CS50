@@ -46,9 +46,9 @@ PAGES = [
     ("The father sits on the edge of the bed singing softly to the boy, who is tucked under the quilt with his toes peeking out.", NIGHT, PJ),
     ("The boy lies in bed under the quilt, sleepy, with the father sitting beside him and the full moon in the window.", NIGHT, PJ),
     ("The father pulls the patchwork quilt snugly over the boy's little feet.", NIGHT, PJ),
-    ("The boy yawns a big sleepy yawn in bed while the father tucks the blanket around him.", NIGHT, PJ),
-    ("The boy is fast asleep in bed; the father sits beside him watching over him tenderly.", NIGHT, PJ),
-    ("The father kisses the forehead of the sleeping boy.", NIGHT, PJ),
+    ("The boy yawns a big sleepy yawn in bed while the father tucks the blanket around him. The boy is tucked in snugly: the blanket covers his whole body from the shoulders down, including his legs and feet. No feet or toes are visible anywhere.", NIGHT, PJ),
+    ("The boy is fast asleep in bed; the father sits beside him watching over him tenderly. The boy is tucked in snugly: the blanket covers his whole body from the shoulders down, including his legs and feet. No feet or toes are visible anywhere.", NIGHT, PJ),
+    ("The father kisses the forehead of the sleeping boy. The boy is tucked in snugly: the blanket covers his whole body from the shoulders down, including his legs and feet. No feet or toes are visible anywhere.", NIGHT, PJ),
 ]
 
 
