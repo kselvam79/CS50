@@ -24,7 +24,7 @@ const FADE = 0.5;
 const pic = (i: number) => staticFile(`pages/p${String(i).padStart(2, '0')}.png`);
 
 const PageView: React.FC<{i: number}> = ({i}) => (
-  <AbsoluteFill style={{background: '#f7efdf', alignItems: 'center'}}>
+  <AbsoluteFill style={{background: '#fdfaf3', alignItems: 'center'}}>
     <Img src={pic(i)} style={{marginTop: 28, width: 1296, height: 864, objectFit: 'cover', borderRadius: 18, boxShadow: '0 10px 40px rgba(60,30,10,0.28)'}} />
     <div style={{height: 188, display: 'flex', flexDirection: 'column', justifyContent: 'center'}}>
       {PAGES[i].lines.map((l, k) => (
@@ -37,13 +37,12 @@ const PageView: React.FC<{i: number}> = ({i}) => (
 );
 
 const Title: React.FC = () => (
-  <AbsoluteFill style={{background: '#2a1710'}}>
+  <AbsoluteFill style={{background: '#fdfaf3'}}>
     <Img src={staticFile('pages/cover.png')} style={{position: 'absolute', left: 0, top: 0, width: 1920, height: 1080, objectFit: 'cover'}} />
-    <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(30,14,8,0.62) 0%, rgba(30,14,8,0) 34%, rgba(30,14,8,0) 76%, rgba(30,14,8,0.7) 100%)'}} />
-    <div style={{position: 'absolute', top: 44, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 800, fontSize: 132, color: '#fff3d6', lineHeight: 1.04, textShadow: '0 6px 30px rgba(0,0,0,0.65)'}}>
+    <div style={{position: 'absolute', top: 40, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 800, fontSize: 138, color: '#2f2a4a', lineHeight: 1.04}}>
       Daddy Loves Those Toes
     </div>
-    <div style={{position: 'absolute', bottom: 46, left: 0, right: 0, textAlign: 'center', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 54, color: '#fff3d6', textShadow: '0 4px 20px rgba(0,0,0,0.7)'}}>
+    <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, padding: '22px 0 26px', textAlign: 'center', background: 'rgba(253,250,243,0.88)', fontFamily: 'Fraunces', fontWeight: 600, fontSize: 52, color: '#2f2a4a'}}>
       Written by Kumar and Soren Selvam
     </div>
   </AbsoluteFill>
